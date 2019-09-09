@@ -1,0 +1,99 @@
+<div class="container my-3 ">
+
+  <div class="row justify-content-center">
+    <div class="col-md-8 order-md-1 border p-3 bg-white">
+      <h4 class="mb-3">Crea un nuevo evento</h4>
+      <form class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="eventTitle">Nombre del evento</label>
+            <input type="text" class="form-control" id="eventTitle" placeholder="Nombre del evento..." value="" required
+              [(ngModel)]="title" [ngModelOptions]="{standalone: true}">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+          <!-- <div class="col-md-6 mb-3">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div> -->
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend ">
+            <span class="input-group-text "><i class="far fa-image"></i></span>
+          </div>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="pictureInput" (change)="onFileSelected($event)">
+            <label class="custom-file-label" for="pictureInput">{{imageUrl}}</label>
+
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="eventPlace">Lugar</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-map-marker-alt m-auto"></i></span>
+            </div>
+            <input type="text" class="form-control" id="eventPlace" placeholder="Calle Falsa 123..." required
+              [(ngModel)]="eventPlace" [ngModelOptions]="{standalone: true}">
+            <div class="invalid-feedback" style="width: 100%;">
+              Es necesario indicar un lugar
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="eventDateStart">Día del evento</label>
+            <input type="date" class="form-control" id="eventDateStart" placeholder="" required [(ngModel)]="startDate"
+              [ngModelOptions]="{standalone: true}">
+            <div class="invalid-feedback">
+              Please select a valid date.
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-3">
+            <label for="eventTimeStart">Inicio</label>
+            <input type="time" class="form-control" id="eventTimeStart" placeholder="" required [(ngModel)]="startTime"
+              [ngModelOptions]="{standalone: true}">
+            <div class="invalid-feedback">
+              Please select a valid date.
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-3">
+            <label for="eventEndStart">Fin</label>
+            <input type="time" class="form-control" id="eventEndStart" placeholder="" required [(ngModel)]="endTime"
+              [ngModelOptions]="{standalone: true}">
+            <div class="invalid-feedback">
+              Please select a valid date.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-md-12 mb-3">
+            <label for="description">Descripción del evento</label>
+            <textarea class="form-control" rows="6" id="description" [(ngModel)]="description"
+              [ngModelOptions]="{standalone: true}"></textarea>
+            <div class="invalid-feedback" style="width: 100%;">
+              Es necesario realizar una descripción del evento
+            </div>
+          </div>
+        </div>
+        <div class="button-group text-center">
+
+          <button type="submit" class="btn btn-success mr-2" (click)="addEvent()">Crear evento</button>
+          <button type="submit" class="btn btn-danger" (click)="cancel()">Cancelar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

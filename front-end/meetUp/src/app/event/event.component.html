@@ -1,0 +1,121 @@
+<div *ngIf="_data.currentEvent['_id'] != null">
+
+  <div class="row header pt-3 mb-3 bg-white">
+    <div class="container">
+      <div class="row ">
+        <div class="col-md-7 col-sm-12">
+          <div class="row">
+            <div class="col-2">
+              <div class=" border text-center calendar">
+                {{_data.currentEvent["eventDateDay"]}} <br />
+                <span class="text-danger">{{_data.currentEvent["eventDateMonth"]}}</span>
+              </div>
+
+            </div>
+            <div class="col-10">
+             <span>{{_data.currentEvent["eventDateFull"]}}</span><br />
+              <h4>{{_data.currentEvent["title"]}}</h4>
+              <div class="row align-items-center">
+                <div class="col-3 text-center ">
+                  <img class="organizerPic rounded-circle" [src]="_data.currentEvent['organizer']['profileImage']"
+                    alt="photo">
+
+                </div>
+                <div class="col-9 pt-2 small">
+                  Organizado por: <a
+                    (click)="loadOrganizer(_data.currentEvent['organizer'])">{{_data.currentEvent["organizer"]["name"]}}</a>
+                  <br />
+                  de:<br />
+                  <p>Grupo público</p>
+                  <!-- <p>{{_data.currentEvent["eventDateStart"]}}</p>
+                                  <p>{{_data.currentEvent["eventPlace"]}}</p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class=" col-md-5 col-sm-12" *ngIf="!_data.isAttending()">
+          <div class="mb-2" *ngIf="!_data.isNotAttending()">¿Asistirás? {{_data.currentEvent["attendants"].length}}
+            personas asistirán al evento</div>
+          <div class="mb-2" *ngIf="_data.isNotAttending()"> Has indicado que no vas a asistir.<br>¿Quieres cambiar de
+            opinión? <br> Otras {{_data.currentEvent["attendants"].length}} personas asistirán al evento</div>
+
+          <div>
+            <button class="btn" [disabled]="_data.isAttending()"
+              [ngClass]="{'btn-primary': !_data.isAttending(), 'disabled': _data.isAttending(), 'btn-muted': _data.isAttending()}"
+              id="attendButton" (click)="attendToEvent()"><i class="fas fa-check"></i></button>
+            <button class="btn" [disabled]="_data.isNotAttending()"
+              [ngClass]="{'btn-primary': !_data.isNotAttending(), 'disabled': _data.isNotAttending(), 'btn-muted': _data.isNotAttending()}"
+              id="noAttendButton" (click)="notAttend()"><i class="fas fa-times"></i></button>
+            <button class="btn" [ngClass]="{'inFavourites': _user.isFavourite(_data.currentEvent['_id'])}"
+              id="favourites" (click)="addToFavourites()"><i class="fas fa-star"></i></button>
+
+          </div>
+          <div class="social-media">
+            Compartir: <i class="fab fa-facebook-square"></i>&nbsp;<i class="fab fa-twitter"></i>&nbsp;<i
+              class="fab fa-linkedin"></i>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12" *ngIf="_data.isAttending()">
+          <p>Ya estás apuntado a este evento</p>
+          <button class="btn btn-danger" id="withdrawButton" (click)="withdrawFromEvent()"><i class="fas fa-times">
+              Desapuntarse</i></button>
+          <button class="btn" [ngClass]="{'inFavourites': _user.isFavourite(_data.currentEvent['_id'])}" id="favourites"
+            (click)="addToFavourites()"><i class="fas fa-star"></i></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="container main">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 my-2">
+        <img [src]="_data.currentEvent['mainImage']" class="event-pic" alt="">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-8 ">
+        <h4>Detalles</h4>
+        <p>{{_data.currentEvent["description"]}}</p>
+        <p><b>Asistentes ({{_data.currentEvent["attendants"].length}})</b> <!-- <a class="float-right">Ver todos</a> -->
+        </p>
+        <div class="row attendantsList">
+          <div class="col-lg-3 col-md-4 col-sm-4"
+            *ngFor="let attendant of _data.currentEvent['attendants']; let i = 'index'">
+
+
+            <div class="card profile-card" [routerLink]="['/profile/'+ attendant['_id']]">
+              <div class="card-body text-center">
+                <img class="avatar rounded-circle" [src]="attendant['profileImage']" alt="photo">
+                <h6 class="card-title">{{attendant['name']}}</h6>
+                <p class=" card-subtitle mb-2 text-muted">Member</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-8 my-2">
+        <p><b>No asistirán ({{_data.currentEvent["notAttending"].length}})</b></p>
+        <div class="row attendantsList">
+          <div class="col-lg-3 col-md-4 col-sm-4"
+            *ngFor="let notAttendant of _data.currentEvent['notAttending']; let i = 'index'">
+
+
+            <div class="card profile-card" [routerLink]="['/profile/'+ notAttendant['_id']]">
+              <div class="card-body text-center">
+                <img class="avatar rounded-circle" [src]="notAttendant['profileImage']" alt="photo">
+                <h6 class="card-title">{{notAttendant['name']}}</h6>
+                <p class=" card-subtitle mb-2 text-muted">Member</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

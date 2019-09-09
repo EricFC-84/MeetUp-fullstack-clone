@@ -1,0 +1,14 @@
+.register{
+    padding: 0 16px;
+    width: 460px;
+}
+
+label{
+    font-weight: bold;
+}
+
+.title{
+    text-align: center;
+    font-weight: bold;
+    margin: 25px 0;
+}

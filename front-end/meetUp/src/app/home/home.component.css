@@ -1,0 +1,147 @@
+.spinner {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+  .bg-black, .btn-dark{
+      background-color: #0f1721;
+  }
+  
+  header{
+      background-color: #00455d;
+      color: white;
+      text-align: center;
+      padding: 40px 0;
+  }
+
+  .search-navbar{
+      margin-top: -24px;
+  }
+
+  .search-navbar .nav-item{
+    color: white;
+    margin: 8px 0;
+  }
+  .btn-group{
+      margin-top: 8px;
+  }
+
+  .mode-button{
+      border-color: #474747
+  }
+.event-table{
+    margin:0;
+    line-height: normal;
+
+}
+
+.eventTime{
+    width: 7em;
+    max-width: 7em;
+
+}
+
+.options-table {
+    border-spacing: 0;
+    border-collapse: separate;}
+
+.options-table a{
+    text-decoration: none;
+    color: black;
+
+}
+.optionSelected{
+    border-left: 5px solid blue;
+    font-weight: bold;
+    /* color: blue; */
+    background-color: #ededfa;
+}
+
+.options-table .optionSelected a{
+color: blue
+}
+
+
+/*   .has-search .form-control {
+    padding-left: 2.375rem;
+}
+  .has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+ */
+
+/* W3SCHOOL */
+
+input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+  }
+
+.search-container button {
+    color: gray;
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background:white;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+
+
+
+
+  /* new spinner */
+
+  #cover-spin {
+    position:fixed;
+    width:100%;
+    left:0;right:0;top:0;bottom:0;
+    background-color: rgba(255,255,255,0.7);
+    z-index:9999;
+    /* display:none; */
+}
+
+@-webkit-keyframes spin {
+	from {-webkit-transform:rotate(0deg);}
+	to {-webkit-transform:rotate(360deg);}
+}
+
+@keyframes spin {
+	from {transform:rotate(0deg);}
+	to {transform:rotate(360deg);}
+}
+
+#cover-spin::after {
+    content:'';
+    display:block;
+    position:absolute;
+    left:48%;top:40%;
+    width:40px;height:40px;
+    border-style:solid;
+    border-color:black;
+    border-top-color:transparent;
+    border-width: 4px;
+    border-radius:50%;
+    -webkit-animation: spin .8s linear infinite;
+    animation: spin .8s linear infinite;
+}
+
+
+a{
+    cursor: pointer;
+}

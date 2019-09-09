@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="login mt-5 p-4 border">
+      <div class="login-header">
+        <h4 class="title">Iniciar sesión <i class="fas fa-lock"></i></h4>
+        <p>¿Todavía no te has registrado? <a [routerLink]="['/register']">Registrarse</a></p>
+      </div>
+      <div class="login-body">
+        <form>
+          <div class="form-group">
+            <label for="loginEmail">Correo electrónico</label>
+            <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+              [(ngModel)]="emailLogin" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Contraseña:</label>
+            <input type="password" class="form-control" id="loginPassword" [(ngModel)]="passwordLogin"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="guardarSesion" [(ngModel)]="guardarSesion"
+            [ngModelOptions]="{standalone: true}">
+            <label class="form-check-label" for="guardarSesion">No cerrar la sesión</label>
+          </div>
+          <button type="submit" class="btn btn-danger mt-2" (click)="login()">Iniciar sesión</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

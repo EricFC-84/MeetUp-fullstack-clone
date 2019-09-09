@@ -1,0 +1,13 @@
+.input-group-text {
+    width: 42px;
+    justify-items: center
+}
+
+.custom-file-label{
+    content: "Archivo";
+}
+
+#pictureInput{
+    cursor: pointer;
+}
+

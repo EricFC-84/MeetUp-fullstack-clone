@@ -1,0 +1,71 @@
+#attendButton{
+    width: 33%;
+    margin-right: 8.5%;
+}
+
+#noAttendButton{
+    width: 33%;
+    margin-right: 8.5%;
+}
+
+.main{
+    background-color: #f6f7f8;
+    
+}
+
+.profile-card{
+    padding: 0 8px;
+    /* height: 160px; */
+
+}
+
+.inFavourites{
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+/* #favourites{
+    width: 17%
+} */
+
+.avatar{
+    height: 70px;
+    width: 70px;
+    margin-bottom: 5px;
+}
+
+.organizerPic{
+    height: 40px;
+    width: 40px;
+}
+
+.header {
+    border-bottom: 1px solid lightgray;
+  }
+  .event-pic{
+      width: 100%;
+      
+  }
+
+  /* Style all font awesome icons */
+.fab {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: gray;
+  }
+  
+  /* Add a hover effect if you want */
+  .fab:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .calendar{
+    background-color: #f6f7f8;
+  }
+
+  a {
+      cursor: pointer;
+  }
