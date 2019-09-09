@@ -1,3 +1,4 @@
 server/node_modules
 server/secrets.json
-front-end/meetUp/node_modules
+front-end/meetUp/*
+!front-end/meetUp/dist
