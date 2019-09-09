@@ -15,6 +15,8 @@ const secrets = JSON.parse(rawFile)
 meetUp.use(bodyParser.json())
 meetUp.use(cors());
 
+meetUp.use(express.static("../front-end/meetUp"))
+
 meetUp.use(expressJWT({secret: secrets["jwt_clave"]}).unless({path: ['/login', '/register', /^\/user\/.*/]}))
 
 //cargamos modelo de mongoose
@@ -83,8 +85,8 @@ function currentTime() {
 
 //conectamos con mongoose
 
-mongoose.connect("mongodb://localhost/meetUp", {
-// mongoose.connect(`mongodb+srv://${secrets["atlas"]}@meetup-fullstack-1ciwb.mongodb.net/test?retryWrites=true&w=majority`, {
+// mongoose.connect("mongodb://localhost/meetUp", {
+mongoose.connect(`mongodb+srv://${secrets["atlas"]}@meetup-fullstack-1ciwb.mongodb.net/test?retryWrites=true&w=majority`, {
     useNewUrlParser: true
 }, (err) => {
     if (err) throw err
@@ -513,6 +515,9 @@ mongoose.connect("mongodb://localhost/meetUp", {
     })
 
 
+    meetUp.listen(80, ()=> {
+        console.log("Escuchando por el puerto 80")
+    })
 
     meetUp.listen(3000, () => {
         console.log("Escuchando por el puerto 3000")

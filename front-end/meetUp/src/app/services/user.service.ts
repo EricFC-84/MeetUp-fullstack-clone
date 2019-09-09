@@ -7,6 +7,7 @@ import {
 import {
   Router
 } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 
 import * as moment from 'moment';
@@ -41,7 +42,7 @@ export class UserService {
       // console.log("Already in favourites")
     }
     
-    this._api.put("http://localhost:3000/users/", {"_id":this.loggedUser["_id"],"favourites": this.loggedUser["favourites"]},
+    this._api.put(environment.url + "users/", {"_id":this.loggedUser["_id"],"favourites": this.loggedUser["favourites"]},
     {"Authorization": "Bearer " + this.token["token"]}).subscribe((response) => {
       this._api.stopLoading();
       // console.log(this.loggedUser)
@@ -57,7 +58,7 @@ export class UserService {
     } else {
       //get user data
       let userId = this.token["id"]
-      let url = "http://localhost:3000/user/" + userId;
+      let url = environment.url + "user/" + userId;
       this._api.get(url, {
         "Authorization": "Bearer " + this.token["token"]
       }).subscribe((response) => {
@@ -72,7 +73,7 @@ export class UserService {
   }
 
   register(newUser: object) {
-    this._api.post("http://localhost:3000/register", newUser).subscribe((response) => {
+    this._api.post(environment.url + "register", newUser).subscribe((response) => {
       this._api.stopLoading();
 
       // console.log(response);
@@ -91,7 +92,7 @@ export class UserService {
       email: email,
       password: password
     }
-    this._api.post("http://localhost:3000/login", body).subscribe((response) => {
+    this._api.post(environment.url + "login", body).subscribe((response) => {
       this._api.stopLoading();
 
       // console.log(response);
@@ -123,7 +124,7 @@ export class UserService {
   }
 
   getProfileData(userId) {
-    let url = "http://localhost:3000/user/" + userId;
+    let url = environment.url + "user/" + userId;
       this._api.get(url/* , {
         "Authorization": "Bearer " + this.token["token"]
       } */).subscribe((response) => {
@@ -143,7 +144,7 @@ export class UserService {
 }
 
   editProfile(body){
-    return this._api.put("http://localhost:3000/users", body, {
+    return this._api.put(environment.url + "users", body, {
       "Authorization": "Bearer " + this.token["token"]
     })
   }

@@ -11,7 +11,7 @@ import * as moment from 'moment';
 import {
   Router
 } from '@angular/router';
-
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class DataService {
   currentEvent: object = {}
 
   addEvent(newEvent: object) {
-    this._api.post("http://localhost:3000/events", newEvent, {
+    this._api.post(environment.url + "events", newEvent, {
       "Authorization": "Bearer " + this._user.token["token"]
     }).subscribe((response) => {
       this._api.stopLoading();
@@ -49,7 +49,7 @@ export class DataService {
   }
 
   loadEvents() {
-    this._api.get("http://localhost:3000/events", {
+    this._api.get(environment.url + "events", {
       "Authorization": "Bearer " + this._user.token["token"]
     }).subscribe((response) => {
       this._api.stopLoading();
@@ -82,7 +82,7 @@ export class DataService {
     console.log("eventID: ", id)
     console.log("token:", this._user.token)
 
-    this._api.get("http://localhost:3000/events/" + id, {
+    this._api.get(environment.url + "events/" + id, {
       "Authorization": "Bearer " + this._user.token["token"]
     }).subscribe((response) => {
       this._api.stopLoading();
@@ -119,7 +119,7 @@ export class DataService {
       "eventID": this.currentEvent["_id"],
       "userID": this._user.loggedUser["_id"]
     }
-    this._api.put("http://localhost:3000/attend", body, {
+    this._api.put(environment.url + "attend", body, {
       "Authorization": "Bearer " + this._user.token["token"]
     }).subscribe((response) => {
       this._api.stopLoading();
@@ -155,7 +155,7 @@ export class DataService {
         "eventID": this.currentEvent["_id"],
         "userID": this._user.loggedUser["_id"]
       }
-      this._api.put("http://localhost:3000/reject", body, {
+      this._api.put(environment.url + "reject", body, {
         "Authorization": "Bearer " + this._user.token["token"]
       }).subscribe((response) => {
         this._api.stopLoading();
@@ -188,7 +188,7 @@ export class DataService {
       "eventID": this.currentEvent["_id"],
       "userID": this._user.loggedUser["_id"]
     }
-    this._api.put("http://localhost:3000/withdraw", body, {
+    this._api.put(environment.url + "withdraw", body, {
       "Authorization": "Bearer " + this._user.token["token"]
     }).subscribe((response) => {
       this._api.stopLoading();
