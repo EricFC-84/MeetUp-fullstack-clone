@@ -87,7 +87,7 @@ function currentTime() {
 //conectamos con mongoose
 
 // mongoose.connect("mongodb://localhost/meetUp", {
-mongoose.connect(`mongodb+srv://${secrets["atlas"]}@meetup-fullstack-1ciwb.mongodb.net/test?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://Eric:${secrets["atlas"]}@meetup-fullstack-1ciwb.mongodb.net/test?retryWrites=true&w=majority`, {
     useNewUrlParser: true
 }, (err) => {
     if (err) throw err
