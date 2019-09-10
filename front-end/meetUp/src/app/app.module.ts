@@ -54,7 +54,7 @@ let AppRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(AppRoutes, {onSameUrlNavigation: 'reload'})
+    RouterModule.forRoot(AppRoutes, {useHash: true})
   ],
   providers: [ApiService, UserService, DataService],
   bootstrap: [AppComponent]

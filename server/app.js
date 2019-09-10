@@ -8,6 +8,7 @@ const colors = require('colors')
 const expressJWT = require("express-jwt")
 const meetUp = express();
 const cors = require('cors')
+var https = require('https')
 
 const rawFile = fs.readFileSync('secrets.json')
 const secrets = JSON.parse(rawFile)
@@ -513,6 +514,11 @@ mongoose.connect(`mongodb+srv://${secrets["atlas"]}@meetup-fullstack-1ciwb.mongo
             })
         })
     })
+
+    https.createServer({
+        key: fs.readFileSync('server.key'),
+        cert: fs.readFileSync('server.cert')
+      }, meetUp)
 
 
     meetUp.listen(80, ()=> {
